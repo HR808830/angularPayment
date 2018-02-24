@@ -1,0 +1,25 @@
+<mat-grid-list cols="3">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title text-center>Login Page</mat-card-title>
+    </mat-card-header>
+    <mat-card-content #logiref>
+      <div class="example-container">
+        <mat-form-field>
+          <input type="text" matInput [(ngModel)]="user.email" #email placeholder="enter email">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input type="password" matInput [(ngModel)]="user.password" placeholder="enter password">
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <button  (click)="copyRef()">copy!</button>
+    <mat-grid-list cols="2" rowHeight="2:1">
+      <mat-grid-tile><button mat-button (click)="logiuser()">Login!</button></mat-grid-tile>
+      <mat-grid-tile><button mat-button (click)="register()">Register</button></mat-grid-tile>
+      <mat-grid-tile><button mat-button (click)="signIn('facebook')">Facebook</button></mat-grid-tile>
+      <mat-grid-tile><button mat-button (click)="signIn('google')">Google</button></mat-grid-tile>
+    </mat-grid-list>
+  </mat-card>
+</mat-grid-list>

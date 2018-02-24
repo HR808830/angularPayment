@@ -1,0 +1,572 @@
+
+<div class="container-fluid">
+
+  <div class="row margin-top-25">
+    <div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-lg-5 col-sm-5 col-md-5 col-xs-12">
+
+      <img src="assets/img/arrow-back.png" srcset="assets/img/arrow-back@2x.png 2x,
+                    assets/img/arrow-back@3x.png 3x" class="arrow-back arrow-center" >
+      <span class="untitled-Questionnaire" >{{questionnaire.questionnaireTitle}}</span>
+    </div>
+    <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+      <div class="row">
+        <div class="col-lg-2 col-sm-2 col-md-2 col-xs-6 ">
+          <img src="assets/img/preview-icon.svg" class="preview-icon pull-right">
+        </div>
+        <div class="col-lg-1 col-sm-1 col-md-1 col-xs-6">
+          <img src="assets/img/more-opt.png" srcset="assets/img/more-opt@2x.png 2x,
+                        assets/img/more-opt@3x.png 3x" class="more-opt" [matMenuTriggerFor]="menu">
+        </div>
+        <div class="col-lg-3 col-sm-3 col-md-3 col-xs-6">
+          <button mat-button class="btnBackgroundSave">
+            <span class="save">SAVE</span>
+          </button>
+        </div>
+
+        <div class="col-lg-3 col-sm-3 col-md-3 col-xs-6">
+          <button mat-button class="btnBackgroundPublish">
+            <span class="publish"> PUBLISH </span>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+
+  </div>
+
+  <div class=" col-lg-offset-2  col-lg-8  col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-12 margin-top-25">
+    <div class="mask-create-que ">
+      <mat-tab-group>
+        <mat-tab label="QUESTIONS" class="questions" (click)="tabselected('QUESTIONS')">
+          <div class="que-form" class="margin-top-25">
+            <mat-form-field class="que-full-width">
+              <input class="Untitled-Questionnai" matInput placeholder="Untitled Questionnaire" [(ngModel)]="questions.questionnaireTitle">
+            </mat-form-field>
+
+            <mat-form-field class="que-description">
+              <input class="questionnaire-descri" matInput placeholder="Questionnaire description" [(ngModel)]="questions.description">
+            </mat-form-field>
+            <div class="line"></div>
+            <div class="instruction-border">
+              <div class="col-lg-12 margin-top-10">
+                <img src="assets/img/ic-info.png" srcset="assets/img/ic-info@2x.png 2x,
+                                            assets/img/ic-info@3x.png 3x" class="ic_info">
+                <div class="instructions">Instruction</div>
+              </div>
+              <mat-form-field class="que-full-width">
+                    <input matInput placeholder="Instructions on how to fill the questionnaires correctly ..." [(ngModel)]="questions.instruction">
+              </mat-form-field>
+            </div>
+          </div>
+          <!--   My questionary create by **********user ************** -->       
+            <div class="mask2" [dragula]='"question-questionsObj"' [dragulaModel]='questions.questionData'>
+              <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 " *ngFor="let question of questions.questionData; let i = index; trackBy:trackByIndex" (click)="mouseClick(question)">
+                <div class="" *ngIf="question.action">
+                   <img src="assets/img/ic-date.png" srcset="assets/img/ic-date@2x.png 2x,
+                      assets/img/ic-date@3x.png 3x" class="dublicate" align="center">
+                </div>
+                <div class="row margin-top-10">
+                  <div class="col-lg-1 col-sm-1 col-md-1 col-xs-1">
+                    <button mat-mini-fab class="oval">
+                      {{i + 1}}
+                    </button>
+                  </div>
+                  <div class="col-lg-5 col-sm-10 col-md-10 col-xs-10 how-do-you-feel margin-top-10 ">
+                    <input style="border:none;" type="text" (change)="editQuestions(question.questionsTitle)" [(ngModel)]="question.questionsTitle"
+                    />
+                    <div class="line"></div>
+                  </div>
+                  <div class="col-lg-6  col-sm-6 col-md-6 col-xs-6" *ngIf="question.action">
+                    <div class="col-xs-11">
+                      <mat-radio-button class="pull-right" value="1">
+                        <mat-form-field>
+                          <mat-select [(ngModel)]="question.questionsType" [(value)]="question.questionsType">
+                            <mat-option value="paragraph">
+                              <span class="glyphicon glyphicon-align-justify"></span> Paragraph
+                            </mat-option>
+                            <mat-option value="multiplechoice">
+                              <span class="glyphicon glyphicon-record"></span> Multiple choice
+                            </mat-option>
+                            <mat-option value="checkboxes">
+                              <span class="glyphicon glyphicon-check"></span> Checkboxes
+                            </mat-option>
+                            <mat-option value="linearscale">
+                              <span class="glyphicon glyphicon-option-horizontal"></span> Linear scale
+                            </mat-option>
+                            <mat-option value="date">
+                              <span class="glyphicon glyphicon-calendar"></span> Date
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </mat-radio-button>
+                    </div>
+                  </div>
+                </div>
+                  <div class="col-lg-11 col-sm-11 col-md-11 col-xs-10">
+                    <mat-form-field class="que-description questionnaire-descri">
+                      <input matInput placeholder="Questionnaire description" [(ngModel)]="question.description">
+                    </mat-form-field>
+                    <div class="line"></div>
+                  </div>
+                <div name="forMultiplechoice" *ngIf="question.questionsType === 'multiplechoice'" [dragula]='"question-mutipleChoice"' [dragulaModel]='question.multiplechoice'>
+                  <div class="row" *ngFor="let cnt of question.multiplechoice; let j = index;">
+                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                      <div style="margin-left:55px;" class="col-lg-5 col-sm-5 col-md-5 col-xs-8">
+                        <mat-radio-button [value]="cnt.name" >
+                        </mat-radio-button>
+                        
+                        <mat-form-field>
+                          <input matInput [value]="question.multiplechoice[j]"  [(ngModel)]="cnt.name">
+                        </mat-form-field>
+                      </div>
+                      <div class="col-lg-2 col-sm-2 col-md-2 col-xs-2" *ngIf="question.isshowvalue">
+                        <span class="value">Value : </span>
+                        <input class="circleButton" type="text" [(ngModel)]="cnt.value">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                      <div style="margin-left:55px;" class="col-lg-10 col-sm-10 col-md-10 col-xs-10">
+                       <!--  <mat-radio-button value="1">
+                        </mat-radio-button> -->
+                        <span>
+                          <span class="add-option-or-ADD-O">Add option or </span>
+                          <span class="add-other" (click)="addMutipleChoice(question)">
+                            "ADD OTHER"
+                          </span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div name="forCheckboxes" *ngIf="question.questionsType === 'checkboxes'" [dragula]='"question-mutipleChoice"' [dragulaModel]='question.checkboxes'>
+                  <div class="row" *ngFor="let checkbox of question.checkboxes; let k = index;">
+                    <div class="col-lg-12  col-sm-12 col-md-12 col-xs-12">
+                      <div style="margin-left:55px;" class="col-lg-5 col-sm-5 col-md-5 col-xs-8">
+                        <mat-checkbox class="checkbox-color"></mat-checkbox>
+                        <mat-form-field class="">
+                          <input matInput [value]="question.checkboxes[k]" [(ngModel)]="checkbox.name">
+                        </mat-form-field>
+                      </div>
+                      <div class="col-lg-2 col-sm-2 col-md-2 col-xs-2" *ngIf="question.isshowvalue">
+                        <span class="value">Value : </span>
+                        <input class="circleButton" type="text" [(ngModel)]="checkbox.value">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                      <div style="margin-left:55px;" class="col-lg-10 col-sm-10 col-md-10 col-xs-10">
+                        <mat-checkbox class="checkbox-color"></mat-checkbox>
+                        <span>
+                          <span class="add-option-or-ADD-O">Add option or </span>
+                          <span class="add-other" (click)="addCheckboxChoice(question)">
+                            "ADD OTHER"
+                          </span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div name="forParagraph" *ngIf="question.questionsType === 'paragraph'">
+                  <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                      <div class="col-lg-offset-1 ">
+                        <mat-form-field class="example-full-width">
+                          <textarea rows="3" matInput placeholder="Type here..." [(ngModel)]="question.paragraph"></textarea>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div name="forlinearscale" *ngIf="question.questionsType === 'linearscale'">
+                  <div class="sucess"> What sets successful people apart from the pack? Is it luck, money, good lucks, and/or talent?
+                  </div>
+                  <div class="row">
+                    <div class="col-md-offset-1 col-md-1 col-sm-1 col-xs-1">
+                      <mat-form-field style="width:100%">
+                        <mat-select [(ngModel)]="question.linearscale.startRange">
+                          <mat-option value="1" selected> 1</mat-option>
+                          <mat-option value="2"> 2</mat-option>
+                          <mat-option value="3"> 3</mat-option>
+                          <mat-option value="4"> 4</mat-option>
+                          <mat-option value="5"> 5</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+
+                    </div>
+                    <div class="col-md-1 col-sm-1 col-xs-1 to"> to </div>
+                    <div class="col-md-1 col-sm-1 col-xs-1 ">
+                      <mat-form-field style="width:100%">
+                        <mat-select [(ngModel)]="question.linearscale.endRange">
+
+                          <mat-option value="2"> 2</mat-option>
+                          <mat-option value="3"> 3</mat-option>
+                          <mat-option value="4"> 4</mat-option>
+                          <mat-option value="5"> 5</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-md-1 col-sm-1 col-xs-1 exchange">
+                      <div>
+                        <i class="fa fa-exchange " aria-hidden="true"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-md-1 col-sm-1 col-xs-1">
+                      <p class="oval-sm">{{ question.linearscale.startRange}}</p>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-3" style="margin-top: -25px;">
+                      <mat-form-field>
+                        <input matInput [(ngModel)]="question.linearscale.startLabel" class="answer">
+                      </mat-form-field>
+
+
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-md-1 col-sm-1 col-xs-1">
+                      <p class="oval-sm">{{question.linearscale.endRange}}</p>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-3" style="margin-top: -25px;">
+                      <mat-form-field>
+                        <input matInput [(ngModel)]="question.linearscale.endLabel" class="answer">
+                      </mat-form-field>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div name="forDate" *ngIf="question.questionsType === 'date'">
+                  <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                      <div class="col-lg-offset-1 col-sm-offset-1 col-md-offset-1 col-xs-offset-1 ">
+                        <mat-form-field>
+                          <input matInput [matDatepicker]="picker" [(ngModel)]="question.date" placeholder="Month, day, year">
+                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="question.action">
+                  <div class="row line1" *ngIf="question.questionsType === 'multiplechoice'|| question.questionsType === 'linearscale' || question.questionsType === 'paragraph'|| question.questionsType === 'date'">
+                    <div class="col-lg-12">
+                      <div class="col-lg-6  col-sm-6 col-md-6 col-xs-6 div-border-right  padding-10">
+                        <div style="float:right">
+                          <img src="assets/img/dublicate.png" srcset="assets/img/dublicate@2x.png 2x,assets/img/dublicate@3x.png 3x" class="dublicate" (click)="copyQuestion(question)">
+                          <img src="assets/img/ic-trash.png" srcset="assets/img/ic-trash@2x.png 2x,assets/img/ic-trash@3x.png 3x" class="ic-trash" style="vertical-align:middle"
+                            (click)="deletequestion(question);">
+                        </div>
+                      </div>
+                      <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 text-center  padding-10 div-border-right">
+                        <div style="vertical-align: middle;
+                                                              display: inline;" class="required">
+                          Required
+                        </div>
+                        <div style="vertical-align: middle;
+                                                              display: inline;">
+                          <mat-slide-toggle [(ngModel)]="question.isrequired"></mat-slide-toggle>
+
+                        </div>
+                      </div>
+                      <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 text-center padding-10">
+                        <div style="vertical-align: middle;
+                                                                  display: inline;" class="required">
+                          Show value
+                        </div>
+                        <div style="vertical-align: middle;
+                                                                  display: inline;">
+                          <mat-slide-toggle [(ngModel)]="question.isshowvalue"></mat-slide-toggle>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row line1" *ngIf="question.questionsType === 'checkboxes'">
+                    <div class="col-lg-12">
+                      <div class="col-lg-3  col-sm-3 col-md-3 col-xs-3 div-border-right  padding-10">
+                        <div style="float:right">
+                          <img src="assets/img/dublicate.png" srcset="assets/img/dublicate@2x.png 2x,
+                                                              assets/img/dublicate@3x.png 3x" class="dublicate" (click)="copyQuestion(question)">
+                          <img src="assets/img/ic-trash.png" srcset="assets/img/ic-trash@2x.png 2x,
+                                                              assets/img/ic-trash@3x.png 3x" class="ic-trash" style="vertical-align:middle"
+                            (click)="deletequestion(question);">
+                        </div>
+                      </div>
+                      <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 text-center  padding-10 div-border-right">
+                        <div style="vertical-align: middle;
+                                                              display: inline;" class="required">
+                          Required
+                        </div>
+                        <div style="vertical-align: middle;
+                                                              display: inline;">
+                          <mat-slide-toggle [(ngModel)]="question.isrequired"></mat-slide-toggle>
+
+                        </div>
+                      </div>
+                      <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 div-border-right">
+                        <div class="col-sm-6">
+                          <div class="row">
+                            <div class="col-sm-6 min-max">Min</div>
+                            <div class="col-sm-6" style="margin-top: -15px;">
+                              <mat-form-field style="width:100%">
+                                <input matInput [(ngModel)]="question.min" class="min-maxinput">
+                              </mat-form-field>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="row">
+                            <div class="col-sm-6 min-max">Max</div>
+                            <div class="col-sm-6" style="margin-top: -15px;">
+                              <mat-form-field style="width:100%">
+                                <input matInput [(ngModel)]="question.max" class="min-maxinput">
+                              </mat-form-field>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 text-center padding-10 div-border-right">
+                        <div style="vertical-align: middle;
+                                                                      display: inline;" class="required">
+                          Show value
+                        </div>
+                        <div style="vertical-align: middle;
+                                                                      display: inline;">
+                          <mat-slide-toggle [(ngModel)]="question.isshowvalue"></mat-slide-toggle>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          <!--   My questionary create by *********user ********** -->       
+        </mat-tab>
+
+        <mat-tab label="RESULTS" class="results" (click)="tabselected('RESULTS')">
+          <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+            <div class="row">
+              <div class="col-lg-offset-1 col-lg-10 scale">
+                <span class="glyphicon glyphicon-option-horizontal"></span> Scale
+                <div class="line"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+            <div class="row">
+              <div class="col-lg-offset-1 col-lg-10">
+                <button mat-mini-fab class="plus-icon-center button-bg">
+                  +
+                </button>
+                <div class="add-scale"> Add Scale</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+            <div class="row">
+              <div class="col-lg-offset-1 col-lg-10 margin-top-25">
+                <div class="float-left">
+                  <button mat-mini-fab class="oval">
+                    1
+                  </button>
+                </div>
+                <div class="col-lg-offset-2">
+                  <div class="scale-name">
+                    Scale name
+                  </div>
+                  <div class="depression">
+                    Depression
+                  </div>
+                  <div class="line2"></div>
+                </div>
+                <div class="clear:both"></div>
+
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-offset-1 col-lg-10">
+                <div class="float-left">
+                  <!-- <button mat-mini-fab>
+                                                1
+                                            </button> -->
+                </div>
+                <div class="col-lg-offset-2">
+                  <div class="questions-result">
+                    Questions:
+                  </div>
+                  <div class="que-no">
+                    1, 2, 4
+                  </div>
+                  <div class="line1"></div>
+                  <img src="assets/img/ic-info1.png" srcset="assets/img/ic-info1@2x.png 2x,
+                                            assets/img/ic-info1@3x.png 3x" class="ic_info">
+                  <span class="enter-numbers-of-que">
+                    Enter numbers of questions associated with this scale
+                  </span>
+                </div>
+                <div class="clear:both"></div>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-offset-1 col-lg-10 margin-top-25">
+                <div class="float-left">
+                  <!-- <button mat-mini-fab>
+                                                    1
+                                                </button> -->
+                </div>
+                <div class="col-lg-offset-2">
+                  <div class="scaleresult margin-left-15">
+                    Results
+                  </div>
+                  <!-- <div class="depression">
+                                                    Depression
+                                                </div> -->
+                  <div class="result-rectangle">
+                    <div class="result-name margin-left-15">
+                      Result name:
+                    </div>
+                    <div class="no-depression margin-left-15">
+                      No Depression
+                    </div>
+                    <div class="line1"></div>
+                    <div class="result-name margin-left-15">
+                      Description:
+                    </div>
+                    <div class="margin-left-15 result-description">
+                      Lorem ipsum dolor sit amet…
+                    </div>
+                    <div class="line1"></div>
+                    <div style="float:left">
+                      <div class="result-name margin-left-15">
+                        Min score
+                      </div>
+                      <div class="no-depression margin-left-15">
+                        <mat-form-field class="inputWidth">
+                          <input matInput class="">
+                        </mat-form-field>
+
+                      </div>
+                    </div>
+                    <div style="float:left;margin-left:10px">
+                      <div class="result-name margin-left-15">
+                        Max score
+                      </div>
+                      <div class="no-depression margin-left-15">
+                        <mat-form-field class="inputWidth">
+                          <input matInput class="">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div style="clear:both"></div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+            <div class="row margin-bottom-75">
+              <div class="col-lg-offset-1 col-lg-10 margin-top-25">
+                <div class="float-left">
+                  <!-- <button mat-mini-fab>
+                                                        1
+                                                    </button> -->
+                </div>
+                <div class="col-lg-offset-2">
+                  <div class="add-result margin-left-15">
+                    Add Result
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="line1"></div>
+            <div class="row">
+              <div class="col-lg-offset-1 col-lg-10 margin-top-25">
+                <div class="float-left">
+                  <!-- <button mat-mini-fab>
+                                                        1
+                                                    </button> -->
+                </div>
+                <div class="col-lg-offset-2">
+                  <div style="float:right">
+                    <div style="vertical-align: middle;float:left">
+                      <div class="show-result-only-to  margin-left-15">
+                        Show result only to therapist
+                      </div>
+                      <div class="and-hide-it-from-client margin-left-15">
+                        and hide it from client
+                      </div>
+                    </div>
+                    <div style="vertical-align: middle;float:left">
+                      <mat-slide-toggle style="margin-top: 8px;margin-left: 12px;"></mat-slide-toggle>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="line1"></div>
+            <div class="row">
+              <div class="col-lg-offset-1 col-lg-10 margin-top-25">
+                <div class="float-left">
+
+                </div>
+                <div class="col-lg-offset-2">
+                  <div style="float:right">
+                    <div style="vertical-align: middle;float:left">
+                      <div class="hide-results  margin-left-15">
+                        Hide-Results
+                      </div>
+                      <div class="in-case-the-question margin-left-15">
+                        and hide it from client
+                      </div>
+                    </div>
+                    <div style="vertical-align: middle;float:left">
+                      <mat-slide-toggle style="margin-top: 8px;margin-left: 12px;"></mat-slide-toggle>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </mat-tab>
+
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item class="dataitem" (click)="undoMethode()">
+            <img src="assets/img/undo.png"> Undo</button>
+          <button mat-menu-item class="dataitem" (click)="onCopy()">
+            <img src="assets/img/copy1.png" class="margin-right-5">Make a copy</button>
+          <button mat-menu-item class="dataitem" (click)="removeQuestionnairelistbyid()">
+            <img src="assets/img/trash1.png" class="margin-right-5">Move to trash</button>
+        </mat-menu>
+
+      </mat-tab-group>
+
+    </div>
+    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12" *ngIf="tabOption" style="margin-top: 20px;margin-bottom: 20px;">
+      <button mat-button class="addQuebtn" (click)="addNewQuestion()">
+        <span class="save">NEW QUESTION</span>
+      </button>
+    </div>
+  </div>
+
+</div>

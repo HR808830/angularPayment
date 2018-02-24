@@ -1,0 +1,55 @@
+<nav class="navbar navbar-inverse hdr_navbar">
+        <div class="container nav_font">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <h4>Angular 5 Front end with Nodejs using Backend Demo for 2016-2017</h4>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav" style="float:right;">
+                    <li><a>Welcome HR PATEl</a></li>
+                    <li><a (click)="logout()" align="right">LOGOUT</a></li>
+                </ul>
+        </div>
+    </nav>
+<div class="container row !important">
+         <!-- *************** Main Menu view **************** -->
+    
+        <div class="col-sm-2">
+            <div class="sidebar-nav">
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <span class="visible-xs navbar-brand">Menu</span>
+                    </div>
+                    <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <span class="hidden-xs ">
+                                <a>
+                                    <img src="assets/image/2.jpg" class="nav_image">
+                                </a>
+                            </span>
+                              <li> <a routerLink="/side-menu/home"> Dashboard  </a> </li>
+                              <li class="dropdown"> <a routerLink="/side-menu/myProfile"> My Profile </a>
+                              </li>
+                              <li class="dropdown"> <a routerLink="/side-menu/paypal"> Paypal </a>
+                              </li>
+                              <li class="dropdown"> <a routerLink="/side-menu/payuMoney"> PayuMoney </a>
+                              </li>
+                              <li class="dropdown"> <a routerLink="/side-menu/change-pwd"> Change Password </a>
+                              </li>
+                              <li class="dropdown"> <a (click)="logout()"> Logout </a>
+                              </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <router-outlet></router-outlet>
+        </div>
+</div>

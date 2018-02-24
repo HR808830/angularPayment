@@ -1,0 +1,134 @@
+
+@charset "utf-8";
+@font-face { font-family: 'open_sansregular'; src: url('../fonts/OpenSans-Regular-webfont.eot'); src: url('../fonts/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/OpenSans-Regular-webfont.woff') format('woff'), url('../fonts/OpenSans-Regular-webfont.ttf') format('truetype'); font-weight: normal; font-style: normal; }
+body { font-family: 'open_sansregular'; background: #E4EDF2; }
+.shadow-box { background: #fff none repeat scroll 0 0; border: medium none; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); position: relative; }
+.btn { box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+.btn.focus, .btn:focus, .btn:hover { box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
+a { color: #1999DA; }
+a:hover { cursor: pointer; text-decoration: none; color: #1999DA; }
+.text-theme { color: #1999DA !important; }
+.bg-theme { background: #1999DA !important; }
+.padd_left15 { padding-left: 15px !important; }
+.padd_right15 { padding-right: 15px !important; }
+.no-padding { padding: 0px !important; }
+/*======================================
+          Theme inbuilt class css
+========================================*/
+
+.no-radius { border-radius: 0px !important; }
+.left { float: left; }
+.right { float: right; }
+.no-padding { padding: 0px !important; }
+.no-margin { margin: 0px !important; }
+.block { display: block; }
+.inline-block { display: inline-block; }
+.w100 { width: 100%; }
+.mrt10 { margin-top: 10px; }
+.mrt20 { margin-top: 10px; }
+.mrb10 { margin-bottom: 10px; }
+/*======================================
+         All Page  list
+
+         01- Layout setup
+========================================*/
+/* Header */
+.admin_header .navbar {
+    border-radius: 0px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+}
+.admin_header .nav > li > a { color:#fff; } 
+.admin_header .navbar-brand {
+    color: #fff;
+    float: left;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    height: 50px;
+    line-height: 20px;
+    padding: 15px;
+    text-transform: capitalize;
+}
+.admin_header .nav > li > a:focus, .admin_header .nav > li > a:hover, .admin_header .nav > li > a:visited {
+    background-color: #d8752b;
+    color: #fff;
+    text-decoration: none;
+}
+.sidetoggle:hover { cursor: pointer; }
+/*End Header */
+
+/*-----------------------------------  
+         01- Layout setup     
+ ----------------------------------*/
+.sidetoggle { color: #fff; float: left; font-size: 25px; padding: 7px 17px 2px 0; position: relative; }
+.theme_sidebar { background: #fff; border-right: 1px solid #ccc; height: 100%; left: -270px; position: fixed; bottom: 0px; overflow: auto; top: 52px; width: 200px; z-index: 100; padding: 30px 0px; transition: all 0.3s ease; }
+.theme_sidebar.in { left: 0; }
+.theme-body {
+    bottom: 0;
+    display: block;
+    padding-left: 200px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 54px;
+    transition: all 0.3s ease 0s;
+    width: 100%;
+    overflow: auto;
+}
+.theme-body.left { padding-left: 0px; }
+.list-widget { list-style: none; padding: 0px; }
+.list-widget li { display: block; width: 100%; }
+.list-widget li a { display: block; width: 100%; padding: 9px 12px; text-decoration: none; }
+.list-widget li.active a { background: #f5f5f5; }
+.list-widget li a:hover { cursor: pointer; background: #eee; }
+.arrowicon { float: right; padding-right: 10px; }
+.submenu { padding-left: 10px !important; }
+.panel {
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 0;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+    margin-bottom: 20px;
+}
+
+
+.list-group-item .title { display: inline-block; font-weight: 600; width: 190px; }
+.backbtn {
+    border: 1px solid #ccc;
+    padding: 0px 10px;
+    margin-right: 7px;
+    font-size: 20px;
+    text-align: center;
+    width: 55px;
+    display: inline-block;
+}
+
+.list-group-item:first-child {
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+}
+.list-group-item:last-child {
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
+.document_list { list-style: none; width: 100%; padding: 0; }
+.document_list li {
+    float: left;
+    width: 50%;
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+}
+.document_list li .doc_title { display: block; }
+.document_list li .doc_file { display: block; }
+
+
+
+
+
+
+
+
+
+
+
+

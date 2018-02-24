@@ -1,0 +1,31 @@
+<div style="text-align:center">
+    <h1>
+      Welcome to Change Password!
+    </h1>
+</div>
+<div class="form-group">
+  <div class="row">
+    <div class="col-xs-12 table-responsive">
+      	<table class="table table-striped">
+	        <tbody >
+	          <tr >
+	            <td>
+					<mat-form-field class="example-full-width">
+					    <input matInput type="password" placeholder="Enter the old password" [(ngModel)]="user.oldpassword">
+					</mat-form-field>
+					<mat-form-field class="example-full-width">
+					    <input matInput type="password" placeholder="Enter the new password" [(ngModel)]="user.newpassword">
+					</mat-form-field>
+					<mat-form-field class="example-full-width">
+					    <input matInput type="password" placeholder="Enter the confirm password" [(ngModel)]="user.confirmpassword">
+					</mat-form-field>
+					<mat-grid-list cols="2" rowHeight="2:1">
+					    <mat-grid-tile><button mat-button (click)="changepwd()">Change Password</button></mat-grid-tile>
+					</mat-grid-list>
+	            </td>
+	          </tr>
+	        </tbody>
+      	</table>
+    </div>
+  </div>
+</div>

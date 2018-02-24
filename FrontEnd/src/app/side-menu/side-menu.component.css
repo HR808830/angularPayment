@@ -1,0 +1,88 @@
+.theme_sidebar{
+  top:2px !important;
+  padding-top: 0px !important;
+}
+
+body {
+    background-color: white !important;
+}
+.content-padding{
+  padding-top: 10px !important;
+}
+/* --------- Navbar horizental header --------------------*/
+
+.hdr_navbar {
+    border-radius: 0px;
+    background-color: #4A4A4A;
+    border: 0px;
+    position: ;
+    z-index: 111;
+    width: 100%;
+    top: 0; 
+}
+.vertical_subheader{
+  background-color: #9B9B9B !important;
+}
+.nav_font {
+    color: #FFFFFF !important;
+}
+
+a {
+    color: #FFFFFF !important;
+}
+
+a:focus {
+    background-color: #555 !important;
+}
+
+a:hover {
+    background-color: #555 !important;
+}
+
+.left_menu {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    padding-top: 5px;
+}
+
+/* --------------- Navbar Vertical header Left Side Menu ---------------------*/
+
+    .navbar-default {border: none; }
+    .sidebar-nav .navbar .navbar-collapse {
+        padding: 0;
+        max-height: none;
+        border: 0px !important;
+        background-color: #4A90E2;
+    }
+
+    .sidebar-nav .navbar ul {
+        float: none;
+        display: block;
+        height: 600px;
+    }
+
+    .sidebar-nav .navbar li {
+        float: none;
+        display: block;
+
+    }
+
+    .sidebar-nav .navbar li a {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        padding-left: 25px;
+    }
+
+    .sidebar-nav .navbar li a:hover {
+        background-color: #4A4A4A;
+        color: white;
+    }
+    .nav_image {
+        min-width: 100% ;
+        max-width: 100% ;
+        padding-bottom: 5px;
+    }
+    .inactive_li {
+        background-color: #F5A623 !important;
+    }
+

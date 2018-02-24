@@ -1,0 +1,51 @@
+<mat-tab-group class="demo-tab-group">
+  <mat-tab label="View Profile">
+    <mat-card>Simple card
+
+     <!--  <form method="post" action="https://pguat.paytm.com/oltp-web/processTransaction" name="f1">
+        <input type="hidden" name="MID" value="{{MID}}" />
+        <input type="hidden" name="PAYTM_MERCHANT_KEY" value="{{PAYTM_MERCHANT_KEY}}" />
+        <input type="hidden" name="WEBSITE" value="{{WEBSITE}}" />
+        <input type="hidden" name="CHANNEL_ID" value="{{CHANNEL_ID}}" />
+        <input type="hidden" name="INDUSTRY_TYPE_ID" value="{{INDUSTRY_TYPE_ID}}" />
+        <button class="btn btn-primary fontBold"  type="submit" width="100%">PAYTM</button>
+      </form> -->
+    </mat-card>
+  </mat-tab>
+  <mat-tab label="Edit Profile">
+    <!-- <mat-card>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-xs-12 table-responsive">
+              <table class="table table-striped">
+                <tbody >
+                  <tr >
+                    <td> -->
+                      <mat-form-field class="example-full-width">
+                          <input matInput type="text" placeholder="Enter the First Name" [(ngModel)]="myprofile.firstName">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width">
+                          <input matInput type="text" placeholder="Enter the Last Name" [(ngModel)]="myprofile.lasttName">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width">
+                          <input matInput type="text" placeholder="Enter Email Id" [(ngModel)]="myprofile.email">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width">
+                          <input matInput type="text" placeholder="Enter phoneNumber" [(ngModel)]="myprofile.phoneNumber">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width">
+                          <input matInput type="text" placeholder="selected profile image" [(ngModel)]="myprofile.image">
+                      </mat-form-field>
+                      <mat-grid-list cols="2" rowHeight="2:1">
+                          <mat-grid-tile><button mat-button (click)="updateProfile()">Edit Profile</button></mat-grid-tile>
+                      </mat-grid-list>
+                   <!--  </td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+        </div>
+      </div>  
+    </mat-card> -->
+  </mat-tab>
+</mat-tab-group>

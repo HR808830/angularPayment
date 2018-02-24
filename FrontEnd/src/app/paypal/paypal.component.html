@@ -1,0 +1,144 @@
+  <div style="text-align:center">
+    <h1>
+      Welcome to HR Choose your plan!
+    </h1>
+  </div>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-xs-12 table-responsive">
+        <table class="table table-striped">
+          <tbody >
+            <tr >
+              <td>
+                <table class="table table-bordered coach_credentials">
+                    <tr>
+                      <th class="level_title"></th>
+                      <th class="level_title">STARTER</th>
+                      <th class="level_title">STANDARD</th>
+                      <th class="level_title">ADVANCED</th>
+                    </tr>
+                    <tr>
+                      <th class="price_color"></th>
+                      <th class="price_color">
+                        <span class="fa fa-usd Moprice">2.99</span>
+                        <span>/MO</span>
+                      </th>
+                      <th class="price_color">
+                        <span class="fa fa-usd Moprice">3.99</span>
+                        <span>/MO</span>
+                      </th>
+                      <th class="price_color">
+                        <span class="fa fa-usd Moprice">5.99</span>
+                        <span>/MO</span>
+                      </th>
+                    </tr>
+                    <tr class="hand-tool tr_body_content">
+                      <td>Profile Image</td>
+                      <td class="levelset">
+                        <span class="glyphicon glyphicon-ok"></span>
+                      </td>
+                      <td class="levelset">
+                        <span class="glyphicon glyphicon-ok"></span>
+                      </td>
+                      <td class="levelset">
+                        <span class="glyphicon glyphicon-ok"></span>
+                      </td>
+                    </tr>
+                    <tr class="hand-tool tr_body_content">
+                      <td>Enhanced Profile</td>
+                      <td class="levelset">
+                        <span class="glyphicon glyphicon-ok"></span>
+                      </td>
+                      <td class="levelset">
+                        <span class="glyphicon glyphicon-ok"></span>
+                      </td>
+                      <td class="levelset">
+                        <span class="glyphicon glyphicon-ok"></span>
+                      </td>
+                    </tr>
+                    
+                    <tr class="hand-tool tr_body_content">
+                      <td>List OF USer</td>
+                      <td></td>
+                      <td class="details">photos</td>
+                      <td class="details">photos</td>
+                    </tr>
+                    <tr class="hand-tool tr_body_content">
+                      <td>Support</td>
+                      <td class="details">Email</td>
+                      <td class="details">Email + phone</td>
+                      <td class="details">Email + phone</td>
+                    </tr>
+                    <tr class="hand-tool tr_body_content">
+                      <td class=""><B>SELECT YOUR PLAN</B></td>
+                      <td class="price_color">
+                        <!-- <mat-radio-group class="example-radio-group" [(ngModel)]="Starter"> -->
+                          <mat-radio-button class="example-radio-button" [(ngModel)]="Starter" (change)="selectedPaln(2.99)"></mat-radio-button>
+                        <!-- </mat-radio-group> -->
+                      </td>
+                      <td class="price_color">
+                        <!-- <mat-radio-group class="example-radio-group" [(ngModel)]="Standard"> -->
+                          <mat-radio-button class="example-radio-button" [(ngModel)]="Standard" (change)="selectedPaln(3.99)"></mat-radio-button>
+                        <!-- </mat-radio-group> -->
+                      </td>
+                      <td class="price_color">
+                        <!-- <mat-radio-group class="example-radio-group" [(ngModel)]="Advanced"> -->
+                          <mat-radio-button class="example-radio-button" [(ngModel)]="Advanced" (change)="selectedPaln(5.99)"></mat-radio-button>
+                        <!-- </mat-radio-group> -->
+                      </td>
+                    </tr>
+                </table>
+                <table class="table table-bordered coach_credentials">
+                  <tr class="hand-tool tr_body_content">
+                    <td class="price_color"><B>SELECT YOUR Payment</B></td>
+                    <td class="price_color">
+                      <div id="paypal-button" (click)="paymentTypeButton('paypal')"></div>
+                    </td>
+                    <td class="price_color">
+                      <form action="" method="POST" id="payment-form" (submit)="stripetToken()">
+                        <button type="submit" style="border:0px;">
+                          <img border="0" src="/assets/image/stripe.png" height="35" width="171" />
+                        </button>
+                      </form>
+                    </td>
+                    <td class="price_color">
+                      <form id="paymentForm" action='https://test.payu.in/_payment' method='POST'>
+                          <input type="hidden" name="key" value="{{mkey}}" />
+                          <input type="hidden" name="txnid" value="{{txnid}}" />
+                          <input type="hidden" name="amount" value="{{amount}}" />
+                          <input type="hidden" name="productinfo" value="{{productInfo}}" />
+                          <input type="hidden" name="firstname" value="{{firstName}}" />
+                          <input type="hidden" name="udf1" value={{id}} />
+                          <input type="hidden" name="email" value="{{email}}" />
+                          <input type="hidden" name="phone" value="{{phone}}" />
+                          <input type="hidden" name="lastname" value="{{lastName}}" />
+                          <input type="hidden" name="surl" value="http://localhost:3000/PaymentStatus" />
+                          <input type="hidden" name="furl" value="http://localhost:3000/PaymentStatus" />
+                          <input type="hidden" name="curl" value="http://localhost:3000/paymentCancel" />
+                          <input type="hidden" name="hash" value="{{hash}}">
+                          <button  (click)="payuMoneyPayment()" type="submit" style="border:0px;">
+                            <img border="0" src="/assets/image/payumoney.jpg" height="35" width="171" />
+                          </button>
+                      </form>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+          
+        </table>
+      </div>
+    </div>
+  </div>
+  
+<!-- <div id="app"> -->
+   <!--  <paypal-button [props]="{ env: env,
+          client: client,
+          commit: commit,
+          payment: payment,
+          onAuthorize: onAuthorize
+      }">
+    </paypal-button> -->
+<!-- </div> -->
+
