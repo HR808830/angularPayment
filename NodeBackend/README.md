@@ -4,7 +4,8 @@
 First Go To Terminal
 
 ```sh
-git clone https://github.com/BhaveshMaisuria/nodeDemo.git
+
+git clone https://github.com/HR808830/angularPayment.git
 ```
 
 Second Step :
